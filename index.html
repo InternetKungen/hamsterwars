@@ -3,50 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista bilder</title>
+    <title>Bilder från /img/</title>
     <style>
-        .bildKolumn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .bild {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
         }
-        .bildKolumn img {
-            max-width: 100%;
+        .bild img {
+            max-width: 200px;
             height: auto;
+        }
+        .bild p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <h1>Bilder i /img/ mappen</h1>
-    <div class="bildKolumn" id="bildLista"></div>
-
-    <script>
-        // Hämta alla bilder från /img/ mappen med filändelsen .jfif
-        fetch('/hamsterwars/img/')
-            .then(response => response.text())
-            .then(text => {
-                // Konvertera svaret till HTML
-                const parser = new DOMParser();
-                const htmlDoc = parser.parseFromString(text, 'text/html');
-
-                // Hämta alla länkar till bilder med filändelsen .jfif
-                const bilder = htmlDoc.querySelectorAll('a[href$=".jfif"]');
-                
-                // Skapa och lägg till varje bild i kolumnen
-                const bildLista = document.getElementById('bildLista');
-                bilder.forEach(bild => {
-                    const img = document.createElement('img');
-                    img.src = '/img/' + bild.textContent;
-                    img.alt = bild.textContent;
-                    bildLista.appendChild(img);
-
-                    // Lägg till filnamnet under varje bild
-                    const filnamn = document.createElement('p');
-                    filnamn.textContent = bild.textContent;
-                    bildLista.appendChild(filnamn);
-                });
-            })
-            .catch(error => console.error('Det gick inte att hämta bilder:', error));
-    </script>
+    <h1>Bilder från /img/</h1>
+    <div class="bild">
+        <img src="/img/Alien.jfif" alt="Alien">
+        <p>Alien.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Amp.jfif" alt="Amp">
+        <p>Amp.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Blood.jfif" alt="Blood">
+        <p>Blood.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Crips.jfif" alt="Crips">
+        <p>Crips.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Demi.jfif" alt="Demi">
+        <p>Demi.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Dracula.jfif" alt="Dracula">
+        <p>Dracula.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Drunk.jfif" alt="Drunk">
+        <p>Drunk.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Esse.jfif" alt="Esse">
+        <p>Esse.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/FatHippie.jfif" alt="FatHippie">
+        <p>FatHippie.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Hero.jfif" alt="Hero">
+        <p>Hero.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Hippie.jfif" alt="Hippie">
+        <p>Hippie.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Homey.jfif" alt="Homey">
+        <p>Homey.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Lobster.jfif" alt="Lobster">
+        <p>Lobster.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Professor.jfif" alt="Professor">
+        <p>Professor.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Pumpkin.jfif" alt="Pumpkin">
+        <p>Pumpkin.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Puto.jfif" alt="Puto">
+        <p>Puto.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Robot.jfif" alt="Robot">
+        <p>Robot.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Robotoo.jfif" alt="Robotoo">
+        <p>Robotoo.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/RockOn.jfif" alt="RockOn">
+        <p>RockOn.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Singer.jfif" alt="Singer">
+        <p>Singer.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/SmallWheel.jfif" alt="SmallWheel">
+        <p>SmallWheel.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Spider.jfif" alt="Spider">
+        <p>Spider.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Trashjfif" alt="Trashjfif">
+        <p>Trashjfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Turbojfif" alt="Turbojfif">
+        <p>Turbojfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Ugly.jfif" alt="Ugly">
+        <p>Ugly.jfif</p>
+    </div>
+    <div class="bild">
+        <img src="/img/Wheely.jfif" alt="Wheely">
+        <p>Wheely.jfif</p>
+    </div>
 </body>
 </html>
