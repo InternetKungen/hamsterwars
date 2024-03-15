@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista bilder</title>
+</head>
+<body>
+    <h1>Bilder i /img/ mappen</h1>
+    <ul id="bildLista"></ul>
+
+    <script>
+        // Hämta alla bilder från /img/ mappen med filändelsen .jfif
+        fetch('/img/')
+            .then(response => response.text())
+            .then(text => {
+                // Konvertera svaret till HTML
+                const parser = new DOMParser();
+                const htmlDoc = parser.parseFromString(text, 'text/html');
+
+                // Hämta alla länkar till bilder med filändelsen .jfif
+                const bilder = htmlDoc.querySelectorAll('a[href$=".jfif"]');
+                
+                // Skapa listelement för varje bild och lägg till dem i listan
+                const bildLista = document.getElementById('bildLista');
+                bilder.forEach(bild => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = bild.textContent;
+                    bildLista.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Det gick inte att hämta bilder:', error));
+    </script>
+</body>
+</html>
