@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista bilder</title>
+    <style>
+        .bildKolumn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bildKolumn img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <h1>Bilder i /img/ mappen</h1>
-    <ul id="bildLista"></ul>
+    <div class="bildKolumn" id="bildLista"></div>
 
     <script>
         // Hämta alla bilder från /img/ mappen med filändelsen .jfif
@@ -21,12 +32,18 @@
                 // Hämta alla länkar till bilder med filändelsen .jfif
                 const bilder = htmlDoc.querySelectorAll('a[href$=".jfif"]');
                 
-                // Skapa listelement för varje bild och lägg till dem i listan
+                // Skapa och lägg till varje bild i kolumnen
                 const bildLista = document.getElementById('bildLista');
                 bilder.forEach(bild => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = bild.textContent;
-                    bildLista.appendChild(listItem);
+                    const img = document.createElement('img');
+                    img.src = '/img/' + bild.textContent;
+                    img.alt = bild.textContent;
+                    bildLista.appendChild(img);
+
+                    // Lägg till filnamnet under varje bild
+                    const filnamn = document.createElement('p');
+                    filnamn.textContent = bild.textContent;
+                    bildLista.appendChild(filnamn);
                 });
             })
             .catch(error => console.error('Det gick inte att hämta bilder:', error));
